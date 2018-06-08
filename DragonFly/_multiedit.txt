@@ -1,0 +1,236 @@
+#
+# This is a config file for Dragonfly's _multiedit.py command-module.
+#  To use this config, you must rename this file to _multiedit.txt and
+#  place it in the same directory as the _multiedit.py file.
+#
+
+# Pull in all of Dragonfly's action objects so that we can use them here.
+
+from dragonfly import *
+from supporting import character, utils
+
+
+#---------------------------------------------------------------------------
+# Here we define the release action which releases all modifier-keys used within this grammar.  It is defined here
+#  because this functionality is used in many different places. Note that it is harmless to release ("...:up") a key multiple
+#  times or when that key is not held down at all.
+
+release = Key("alt:up, shift:up, ctrl:up")
+
+
+#---------------------------------------------------------------------------
+# Here we define the single-action commands.  These can be spoken
+#  in series so as to execute multiple actions within a single utterance.
+
+
+cmd.map = {
+        # Spoken-form    ->    ->    ->     Action object
+
+        #### Cursor manipulation
+        "cup [<n>]": Key("up:%(n)d"),
+        "down [<n>]": Key("down:%(n)d"),
+        "left [<n>]": Key("left:%(n)d"),
+        "right [<n>]": Key("right:%(n)d"),
+        "port [<n>]": Key("c-left:%(n)d"),
+        "yope [<n>]": Key("c-right:%(n)d"),
+        "home [<n>]": Key("home:%(n)d"),
+        "kick [<n>]": Key("end:%(n)d"),
+        "top": Key("c-home"),
+        "toe": Key("c-end"),
+        "make line": Key("up, end, enter"),
+
+        #### Various keys
+        character.SPACE       + " [<n>]": Key("space:%(n)d"),
+        character.TAB         + " [<n>]": Key("tab:%(n)d"),
+        character.S_TAB       + " [<n>]": Key("s-tab:%(n)d"),
+        character.ENTER       + " [<n>]": Key("enter:%(n)d"),
+        character.DEL         + " [<n>]": Key("del:%(n)d"),
+        character.BACKSPACE   + " [<n>]": Key("backspace:%(n)d"),
+        character.ESCAPE      + " [<n>]": Key("escape:%(n)d"),
+        
+        character.AMPERSAND   + " [<n>]": Key("ampersand:%(n)d"),
+        character.APOSTROPHE  + " [<n>]": Key("apostrophe:%(n)d"),
+        character.ASTERISK    + " [<n>]": Key("asterisk:%(n)d"),
+        character.AT          + " [<n>]": Key("at:%(n)d"),
+        character.BACKSLASH   + " [<n>]": Key("backslash:%(n)d"),
+        character.BACKTICK    + " [<n>]": Key("backtick:%(n)d"),
+        character.BAR         + " [<n>]": Key("bar:%(n)d"),
+        character.CARET       + " [<n>]": Key("caret:%(n)d"),
+        character.COLON       + " [<n>]": Key("colon:%(n)d"),
+        character.HYPHEN      + " [<n>]": Key("hyphen:%(n)d"),
+        character.COMMA       + " [<n>]": Key("comma:%(n)d"),
+        character.DOLLAR      + " [<n>]": Key("dollar:%(n)d"),
+        character.DOT         + " [<n>]": Key("dot:%(n)d"),
+        character.DQUOTE      + " [<n>]": Key("dquote:%(n)d"),
+        character.EQUAL       + " [<n>]": Key("equal:%(n)d"),
+        character.EXCLAMATION + " [<n>]": Key("exclamation:%(n)d"),
+        character.HASH        + " [<n>]": Key("hash:%(n)d"),
+        character.PERCENT     + " [<n>]": Key("percent:%(n)d"),
+        character.PLUS        + " [<n>]": Key("plus:%(n)d"),
+        character.QUESTION    + " [<n>]": Key("question:%(n)d"),
+        character.SLASH       + " [<n>]": Key("slash:%(n)d"),
+        character.SQUOTE      + " [<n>]": Key("squote:%(n)d"),
+        character.TILDE       + " [<n>]": Key("tilde:%(n)d"),
+        character.UNDERSCORE  + " [<n>]": Key("underscore:%(n)d"),
+        character.SEMICOLON   + " [<n>]": Key("semicolon:%(n)d"),
+        character.LANGLE      + " [<n>]": Key("langle:%(n)d"),
+        character.RANGLE      + " [<n>]": Key("rangle:%(n)d"),
+        character.LBRACE      + " [<n>]": Key("lbrace:%(n)d"),
+        character.RBRACE      + " [<n>]": Key("rbrace:%(n)d"),
+        character.LBRACKET    + " [<n>]": Key("lbracket:%(n)d"),
+        character.RBRACKET    + " [<n>]": Key("rbracket:%(n)d"),
+        character.LPAREN      + " [<n>]": Key("lparen:%(n)d"),
+        character.RPAREN      + " [<n>]": Key("rparen:%(n)d"),
+        
+        ### ALPHABET
+        character.A           + " [<n>]": Key("a:%(n)d"),
+        character.B           + " [<n>]": Key("b:%(n)d"),
+        character.C           + " [<n>]": Key("c:%(n)d"),
+        character.D           + " [<n>]": Key("d:%(n)d"),
+        character.E           + " [<n>]": Key("e:%(n)d"),
+        character.F           + " [<n>]": Key("f:%(n)d"),
+        character.G           + " [<n>]": Key("g:%(n)d"),
+        character.H           + " [<n>]": Key("h:%(n)d"),
+        character.I           + " [<n>]": Key("i:%(n)d"),
+        character.J           + " [<n>]": Key("j:%(n)d"),
+        character.K           + " [<n>]": Key("k:%(n)d"),
+        character.L           + " [<n>]": Key("l:%(n)d"),
+        character.M           + " [<n>]": Key("m:%(n)d"),
+        character.N           + " [<n>]": Key("n:%(n)d"),
+        character.O           + " [<n>]": Key("o:%(n)d"),
+        character.P           + " [<n>]": Key("p:%(n)d"),
+        character.Q           + " [<n>]": Key("q:%(n)d"),
+        character.R           + " [<n>]": Key("r:%(n)d"),
+        character.S           + " [<n>]": Key("s:%(n)d"),
+        character.T           + " [<n>]": Key("t:%(n)d"),
+        character.U           + " [<n>]": Key("u:%(n)d"),
+        character.V           + " [<n>]": Key("v:%(n)d"),
+        character.W           + " [<n>]": Key("w:%(n)d"),
+        character.X           + " [<n>]": Key("x:%(n)d"),
+        character.Y           + " [<n>]": Key("y:%(n)d"),
+        character.Z           + " [<n>]": Key("z:%(n)d"),
+                
+        ### Numbers
+        "zero": Key("0"),
+        "one": Key("1"),
+        "two": Key("2"),
+        "three": Key("3"),
+        "four": Key("4"),
+        "five": Key("5"),
+        "six": Key("6"),
+        "seven": Key("7"),
+        "eight": Key("8"),
+        "nine": Key("9"),
+
+        ### Special Strings
+        "gets": Key("space, equal, space"),
+        "eeks": Key("space, equal, equal, space"),
+        "(not eeks | nodeeks)": Key("space, bang, equal, space"),
+        "line dash": Key("space, hyphen, hyphen, space"),
+        "(one | won) dash": Key("space, hyphen, space"),
+        "string (add | had)": Key("space, plus, space"),
+        "(spacebar | space bar) space": Text(" | "),
+
+        ### Lines
+        "wipe [<n>]": Key("end, home:2, s-down:%(n)d, del"), # del lines down
+        "wipe up [<n>]": release + Key("end, home:2, s-up:%(n)d, s-home, del"), # del lines up
+        "clear line": Key("end, home:2, s-end, del"), # del everything on the line except the newline
+        "strip": release + Key("s-end, del"), # del from cursor to line end
+        "grab": release + Key("s-end, c-c"), # copy from cursor to line end
+        "cut end": release + Key("s-end, c-x"), # cut from cursor to line end
+        "strip head": release + Key("s-home, del"), # del from cursor to line home
+        "grab head": release + Key("s-home, c-c"), # copy from cursor to line home
+        "cut head": release + Key("s-home, c-x"), # cut from cursor to line home
+        "nab [<n>]": release + Key("end, home:2, s-down:%(n)d, c-c, up"), # copy lines down
+        "swipe [<n>]": release + Key("end, home:2, s-down:%(n)d, c-x, escape"), # cut lines down
+        "dupe": release + Key("end, home, s-end, c-c, end, enter, c-v"), # duplicate lines down
+
+        ### words
+        "bump [<n>]": release + Key("cs-right:%(n)d, del"), # del words right
+        "swat [<n>]": release + Key("cs-left:%(n)d, del"), # del words left
+        "scoop right [<n>]": release + Key("right:2, c-left, cs-right:%(n)d, c-c, right"), # copy words right
+        "scoop left [<n>]": release + Key("left, c-right, cs-left:%(n)d, c-c, left"), # copy words left
+        "slice right [<n>]": release + Key("right:2, c-left, cs-right:%(n)d, c-x, right"), # cut words right
+        "slice left [<n>]": release + Key("left, c-right, cs-left:%(n)d, c-x, left"), # cut words left
+        "select right [<n>]": release + Key("cs-right:%(n)d"), # select words right
+        "select left [<n>]": release + Key("cs-left:%(n)d"), # select words left
+        
+        ### copy/paste
+        "pace": release + Key("c-v"), # paste
+        "clone [<n>]": release + Key("c-c, c-v:%(n)d"), # copy/paste
+        "copy": release + Key("c-c"), # copy
+        "cut": release + Key("c-x"), # cut
+        "(select all | tarp)": release + Key("c-a"), # select all
+        "copy all": release + Key("c-a, c-c"), # copy all
+
+        #"(mash | sky)": Key("shift:down"),
+        #"mark": Key("shift:down"),
+        #"mark up": Key("shift:up"),
+        "release": release,
+
+        ### other
+        "undo [<n>]": Key("c-z:%(n)d"),
+        "preev window": Key("a-tab/10"),
+        "preev file": Key("c-tab"),
+        "say <text>": release + Text("%(text)s"),
+        "close tab [<n>]": Key("c-w/20:%(n)d"),
+        "new (thing | file)": Key("c-n"),
+        "file save": Key("c-s"),
+        "(web search | search web) <text>": Mimic("search", "the", "web", "for", extra="text"),
+        "(you tells | utils)": Text("utils"),
+        "new Evernote": Key("ca-n"),
+                                
+        ### Intellij Commands
+        #"comment": Key("c-slash"),
+}
+
+#---------------------------------------------------------------------------
+# Here we define various functions for formatting text.
+# Each of these functions must have a docstring which defines its
+#  spoken-form.  This docstring must include the "<dictation>" extra.
+#  See below for various examples.
+
+# Format: some_words
+def format_snake(dictation):
+    """ (score | snake) <dictation> """
+    return utils.snake(str(dictation))
+
+# Format: some_words()
+def format_score_function(dictation):
+    """ (score | snake) funk <dictation> """
+    return utils.snake_function(str(dictation))
+
+# Format: SOME_WORDS
+def format_upper_score(dictation):
+    """ (score | snake) up <dictation> """
+    return utils.upper_snake(str(dictation))
+
+# Format: somewords
+def format_one_word(dictation):
+    """ squash <dictation> """
+    return utils.one_word(str(dictation))
+
+# Format: SOMEWORDS
+def format_upper_word(dictation):
+    """ squash up <dictation> """
+    return utils.upper_one_word(str(dictation))
+
+# Format: SomeWords
+def format_pascal(dictation):
+    """ Pascal <dictation> """
+    return utils.pascal(str(dictation))
+
+# Format: SomeWords()
+def format_pascal_function(dictation):
+    """ Pascal funk <dictation> """
+    return utils.pascal_function(str(dictation))
+
+# Format: someWords
+def format_camel(dictation):
+    """ camel <dictation> """
+    return utils.camel(str(dictation))
+
+# Format: someWords()
+def format_camel_function(dictation):
+    """ camel funk <dictation> """
+    return utils.camel_function(str(dictation))

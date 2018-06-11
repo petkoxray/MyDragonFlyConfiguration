@@ -32,6 +32,12 @@ class CommandRule(MappingRule):
 		#Navigation
 		"toggle sidebar":              Key("c-b"),
 		"toggle panel":                Key("c-j"),
+		"toggle explorer":             Key("cs-e"),
+		"toggle problems":             Key("cs-m"),
+		"focus edtior":                Key("c-1"),
+		"rename var":                  Key("c-f2"),
+		"trigger suggestion":          Key("c-space"),
+		"trigger parameter hints":     Key("cs-space"),
 		"find":                        Key("c-f"),
 
 		
